@@ -13,7 +13,9 @@ async function onCreateNode(
   },
   pluginOptions
 ) {
-  const extensionsConfig = pluginOptions.fileExtensions
+  const extensionsConfig = 
+        
+        .fileExtensions
 
   // make extensions configurable and use adoc and asciidoc as default
   const supportedExtensions =
@@ -31,6 +33,10 @@ async function onCreateNode(
       new pluginOptions.converterFactory(asciidoc),
       [`html5`]
     )
+  }
+    
+  if (pluginOptions.syntaxHighlighter) {
+    asciidoc.SyntaxHighlighter(pluginOptions.syntaxHighlighter.name, pluginOptions.syntaxHighlighter.highlighter);
   }
 
   // changes the incoming imagesdir option to take the
